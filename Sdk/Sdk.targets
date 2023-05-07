@@ -1,0 +1,59 @@
+<!--
+ * Sdk.targets
+ *
+ *   Created: 2023-03-30-01:56:18
+ *   Modified: 2023-03-30-02:18:08
+ *
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *
+ *   Copyright © 2022 - 2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  </PropertyGroup>
+  <ItemGroup>
+
+  </ItemGroup>
+  <!-- <Target Name="PrepareModuledManifest" BeforeTargets="Build">
+    <ItemGroup>
+      <PsdManifest Include="RootModule" Value="$(TargetPath)" />
+      <PsdManifest Include="Path" Value="$(MSBuildProjectDirectory)/$(MSBuildProjectName).psd1" />
+      <PsdManifest Include="MestedModules" Value="@(NestedModule)" />
+      <PsdManifest Include="Guid" Value="$(ProjectGuid) ?? $([System.Guid]::NewGuid().ToString())" />
+      <PsdManifest Include="CompanyName" Value="$(CompanyName)" />
+      <PsdManifest Include="Author" Value="$(Authors)" />
+      <PsdManifest Include="Copyright" Value="$(Copyright)" />
+      <PsdManifest Include="ModuleVersion" Value="$(Version)" />
+      <PsdManifest Include="DotNetFrameworkVersion" Value="$(TargetFramework)" />
+      <PsdManifest Include="RequiredModules" Value="@(RequiredModule)" />
+      <PsdManifest Include="ScriptsToProcess" Value="@(Script)" />
+      <PsdManifest Include="RequiredAssemblies" Value="@(Reference)" />
+    </ItemGroup>
+  </Target> -->
+
+    <PropertyGroup>
+    <CreateCustomManifestResourceNamesDependsOn></CreateCustomManifestResourceNamesDependsOn>
+  </PropertyGroup>
+
+  <Target
+      Name="CreateCustomManifestResourceNames"
+      DependsOnTargets="$(CreateCustomManifestResourceNamesDependsOn)"/>
+
+    <PropertyGroup>
+        <CreateManifestResourceNamesDependsOn></CreateManifestResourceNamesDependsOn>
+    </PropertyGroup>
+
+    <Target
+        Name="CreateManifestResourceNames"
+        Condition="'@(EmbeddedResource)' != ''"
+        DependsOnTargets="$(CreateManifestResourceNamesDependsOn)" />
+
+    <UsingTask TaskName="Dgmjr.PsProj.Tasks.PrepareModuleManifest" 
+      AssemblyFile="$(MSBuildThisFileDirectory)../lib/netstanard2.0/PSProj.dll" />
+
+    <Target Name="CoreCompile">
+      <Dgmjr.PsProj.Tasks.PrepareModuleManifest />
+    </Target>
+</Project>

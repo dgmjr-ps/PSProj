@@ -1,0 +1,31 @@
+<!--
+ * PSProj.csproj
+ * 
+ *   Created: 2023-03-30-01:56:53
+ *   Modified: 2023-03-30-02:18:35
+ * 
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *   
+ *   Copyright © 2022 - 2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Library</OutputType>
+    <OutputPath>lib/</OutputPath>
+    <DestinationFolder>lib/</DestinationFolder>
+    <PackageType>MSBuildSdk</PackageType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Usings" PrivateAssets="All" />
+    <PackageReference Include="Dgmjr.MSBuild.Extensions" PrivateAssets="All" />
+    <PackageReference Include="Dgmjr.System.Extensions" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="./Sdk/*.*" PackagePath="Sdk/%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+<!--
+ * Sdk.props
+ * 
+ *   Created: 2023-03-30-01:58:30
+ *   Modified: 2023-03-30-02:18:21
+ * 
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *   
+ *   Copyright © 2022 - 2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+
+<Project>
+  <PropertyGroup>
+  
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <NestedModule />
+    <RequiredModule />
+    <Script />
+    <Function />
+    <Alias />
+    <Variable />
+    <Cmdlet />
+    <Script />
+  </ItemDefinitionGroup>
+</Project>
