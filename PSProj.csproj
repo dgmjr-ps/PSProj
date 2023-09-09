@@ -14,11 +14,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <LangVersion>latest</LangVersion>
-    <OutputType>Library</OutputType>
-    <OutputPath>lib/</OutputPath>
-    <DestinationFolder>lib/</DestinationFolder>
     <PackageType>MSBuildSdk</PackageType>
+    <Description>An SDK for packaging PowerShell projects</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MSBuild.Usings" PrivateAssets="All" />
